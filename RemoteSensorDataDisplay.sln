@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gRPCServer", "gRPCServer\gRPCServer.csproj", "{E8C75E0A-EB15-4895-8123-7ACD6C69F6CC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gRPCClient", "gPRCClient\gRPCClient.csproj", "{536E0024-5F8F-49AC-8AB9-36218A564EAA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "grpcCommonLibrary", "grpcCommonLibrary\grpcCommonLibrary.csproj", "{4B7284C9-B817-459B-9B00-4B4B8F4DEA45}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sensor", "Sensor.cs\Sensor.csproj", "{E8508A5D-F065-4507-B3A7-4AAEBB531251}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E8C75E0A-EB15-4895-8123-7ACD6C69F6CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8C75E0A-EB15-4895-8123-7ACD6C69F6CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8C75E0A-EB15-4895-8123-7ACD6C69F6CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8C75E0A-EB15-4895-8123-7ACD6C69F6CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{536E0024-5F8F-49AC-8AB9-36218A564EAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{536E0024-5F8F-49AC-8AB9-36218A564EAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{536E0024-5F8F-49AC-8AB9-36218A564EAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{536E0024-5F8F-49AC-8AB9-36218A564EAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B7284C9-B817-459B-9B00-4B4B8F4DEA45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B7284C9-B817-459B-9B00-4B4B8F4DEA45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B7284C9-B817-459B-9B00-4B4B8F4DEA45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B7284C9-B817-459B-9B00-4B4B8F4DEA45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8508A5D-F065-4507-B3A7-4AAEBB531251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8508A5D-F065-4507-B3A7-4AAEBB531251}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8508A5D-F065-4507-B3A7-4AAEBB531251}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8508A5D-F065-4507-B3A7-4AAEBB531251}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {911B2055-71E3-4FEC-824E-2C20F2D0C2F5}
+	EndGlobalSection
+EndGlobal
