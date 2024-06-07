@@ -13,11 +13,16 @@ namespace grpcCommonLibrary
     {
         [Operation]
         IAsyncEnumerable<SensorResponse> SensorTest(SensorRequest request, CallContext context = default);
+
+        [Operation]
+        Task<ServoResponse> ServoTest(ServoRequest request, CallContext context = default);
     }
 
     public class RobotService : IRobotService
     {
         Altimeter alt = new Altimeter();
+        Servo servo = new Servo();
+        bool operationOk = false;
         async IAsyncEnumerable<SensorResponse> IRobotService.SensorTest(SensorRequest request, CallContext context)
         {
             alt.Connect();
@@ -29,8 +34,6 @@ namespace grpcCommonLibrary
                 resp.result = data;
                 yield return resp;
             }
-
-            
         }
 
         private async IAsyncEnumerable<double> GetDataStream(CallContext context)
@@ -73,5 +76,33 @@ namespace grpcCommonLibrary
             }
         }
 
+        async Task<ServoResponse> IRobotService.ServoTest(ServoRequest request, CallContext context = default)
+        {
+             await GetOperationStatus();
+
+            var resp = new ServoResponse();
+            resp.result = operationOk;
+            return resp;
+        }
+
+        private async Task GetOperationStatus()
+        {
+            alt.Connect();
+
+            EventHandler<double> dataHandler = (s, d) =>
+            {
+                try
+                {
+                    if (Math.Abs(d) > 0)
+                        operationOk = true;
+                    else
+                        operationOk = false;
+                }
+                catch (InvalidOperationException) { }
+            };
+            alt.DataReceived += dataHandler;
+            await Task.Delay(1000);
+        }
+       
     }
 }

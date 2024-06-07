@@ -26,7 +26,10 @@ namespace gPRCServer
                 {
                     webBuilder.ConfigureKestrel(options =>
                     {
-                        IPAddress ipaddress = IPAddress.Parse("127.0.0.1");
+                        string ip = GetIPAddress();
+                        if (ip == "")
+                            return;
+                        IPAddress ipaddress = IPAddress.Parse(ip);
                         options.Listen(ipaddress, 11421, listenOptions =>
                         {
                             listenOptions.Protocols = HttpProtocols.Http2;
@@ -35,7 +38,21 @@ namespace gPRCServer
 
                     webBuilder.UseStartup<Startup>();
                 });
-                //.UseWindowsService() //temproraily 
-                //.UseSystemd();
+        //.UseWindowsService() //temproraily 
+        //.UseSystemd();
+
+
+        private static string GetIPAddress()
+        { 
+            string hostName = Dns.GetHostName();
+            IPHostEntry hostentry = Dns.GetHostEntry(hostName);
+            foreach (IPAddress ip in hostentry.AddressList)
+            {
+                if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork && 
+                    ip.ToString().StartsWith("192.168.0"))
+                    return ip.ToString();
+            }
+            return "";
+        }
     }
 }

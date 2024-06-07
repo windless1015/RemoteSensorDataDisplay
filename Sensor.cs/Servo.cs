@@ -3,17 +3,18 @@ using System.Threading.Channels;
 
 namespace Sensor.cs
 {
-    public class Altimeter
+    public class Servo
     {
+        private YServo _servo;
         private YAltitude _altitude;
         private Task _sensorTask;
         private CancellationTokenSource _cancellationTokenSource;
 
         public event EventHandler<double> DataReceived;
 
-        public Altimeter()
+        public Servo()
         {
-            
+
         }
 
         public void Connect()
@@ -34,11 +35,11 @@ namespace Sensor.cs
                 code = _altitude.set_reportFrequency("5/s");
                 code = _altitude.registerTimedReportCallback(AltitudeCallBack);
 
-                while (true)
-                {
-                    await Task.Delay(1);
-                    YAPI.HandleEvents(ref errmsg);
-                }
+                //while (true)
+                //{
+                //    await Task.Delay(1);
+                //    YAPI.HandleEvents(ref errmsg);
+                //}
             }, _cancellationTokenSource.Token);
             _sensorTask.Start();
         }
